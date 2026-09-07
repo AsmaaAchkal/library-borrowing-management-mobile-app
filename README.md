@@ -196,8 +196,3 @@ npx expo start
 
 ![Borrowing Management](screenshots/admin-borrowings.png)
 
----
-
-## License
-
-MIT License
