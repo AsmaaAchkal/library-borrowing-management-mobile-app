@@ -1,80 +1,203 @@
-# application-mobile-gestion-livres-emprunts
+# Library and Borrowing Management Mobile Application
 
-Application Mobile de Gestion des Livres et des Emprunts avec une API REST
+A full-stack mobile application for managing books and borrowing operations.
 
-Ce projet consiste à créer une application destinée à la **gestion des emprunts de livres** au sein de structures éducatives ou associatives. Il comporte deux interfaces : une pour les **utilisateurs (lecteurs)** et une pour les **administrateurs**.
+The solution combines a React Native mobile application with a secure REST API built using Node.js, Express.js and Prisma ORM.
 
----
-
-## Fonctionnalités
-
-### Pour l’utilisateur (Lecteur)
-
-- Inscription et connexion sécurisées via JWT
-- Consultation des livres disponibles
-- Visualisation des détails d’un livre
-- Emprunt d’un livre
-- Historique des emprunts (livres rendus et non rendus)
-- Retour d’un livre
-- Consultation du profil
-- Déconnexion
-
-### Pour l’administrateur
-
-- Connexion sécurisée
-- Gestion complète des livres :
-  - Ajouter un nouveau livre
-  - Modifier les informations d’un livre
-  - Supprimer un livre
-  - Visualiser la liste des livres avec leur statut (disponible ou emprunté)
-- Gestion des emprunts :
-  - Consulter tous les livres empruntés
-  - Suivre les livres rendus et non rendus
-- Gestion des utilisateurs :
-  - Modifier un utilisateur existant
-  - Supprimer un utilisateur
-  - Visualiser la liste des utilisateurs
-- Consultation du profil administrateur
-- Déconnexion
+It enables users to browse books, borrow and return them, while administrators can manage books and borrowing records through dedicated management features.
 
 ---
 
-## Technologies utilisées
+## Problem Statement
 
-- **Backend** :
-  - Express.js
-  - Prisma ORM
-  - JSON Web Token (JWT)
-- **Frontend mobile** :
-  - React Native
-  - Expo
+Many educational institutions, training centers and libraries still rely on manual processes to manage book borrowing operations.
+
+These methods often lead to:
+
+- Lack of automation
+- Difficulty tracking borrowed books
+- Limited accessibility
+- Inefficient resource management
+
+This project provides a centralized and mobile-first solution to simplify and automate library operations.
 
 ---
 
-##  Comment l'utiliser
+## Objectives
 
-### 1. Cloner le dépôt
-  ```bash
-     git clone https://github.com/AsmaaAchkal/application-mobile-gestion-livres-emprunts.git
-     cd nom_de_projet
-  ```
-### 2.Créer la base de données
-   Créer une base de données .
-   Assure-toi que le fichier .env contient une URL correcte pour ta base de données (PostgreSQL, MySQL, SQLite, etc.).
+The project aims to:
 
-### 3. Lancer le Frontend (React Native avec Expo)
-  ```bash
-      npm install
-      npx expo start
-  ```
+- Provide secure authentication using JWT
+- Allow users to browse available books
+- Enable borrowing and returning books
+- Automate book availability management
+- Manage books through complete CRUD operations
+- Improve accessibility through a mobile application
 
-### 4. Lancer le Backend (Express + Prisma)
-  ```bash
-     cd backend
-     npm install
-     npx prisma generate
-     npx prisma migrate dev --name init
-     node seed.js
-     cd src
-     node server.js
+---
+
+## Features
+
+### User Features
+
+- User registration
+- Secure authentication with JWT
+- View available books
+- View detailed book information
+- Borrow books
+- Return borrowed books
+- Borrowing history
+- Profile management
+- Logout
+
+### Administrator Features
+
+#### Book Management
+
+- Add books
+- Edit books
+- Delete books
+- View all books
+- Monitor book availability
+
+#### Borrowing Management
+
+- View all borrowings
+- Track returned books
+- Track active borrowings
+
+#### Administration
+
+- Administrator profile management
+- Secure authentication
+- Logout
+
+---
+
+## Database Model
+
+### User
+
+- id
+- nom
+- prenom
+- telephone
+- email
+- password
+- role (USER / ADMIN)
+
+### Livre
+
+- id
+- titre
+- auteur
+- datePublication
+- description
+- categorie
+- isbn
+- disponible
+
+### Emprunt
+
+- id
+- userId
+- livreId
+- dateEmprunt
+- dateRetour
+
+---
+
+## Technologies Used
+
+### Backend
+
+- Node.js
+- Express.js
+- Prisma ORM
+- JWT Authentication
+- MySQL
+
+### Mobile Application
+
+- React Native
+- Expo
+- Expo Router
+- Fetch API
+- React Context API
+
+### Development Tools
+
+- Visual Studio Code
+- Postman
+- Android Studio
+- XAMPP
+
+---
+
+## Installation
+
+### Clone the repository
+
+```bash
+git clone https://github.com/AsmaaAchkal/library-borrowing-management-mobile-app.git
 ```
+
+### Backend Setup
+
+```bash
+cd backend
+
+npm install
+
+npx prisma generate
+
+npx prisma migrate dev --name init
+
+node seed.js
+
+cd src
+
+node server.js
+```
+
+### Mobile Application Setup
+
+```bash
+npm install
+
+npx expo start
+```
+
+---
+
+## Screenshots
+
+### Authentication
+
+![Login](screenshots/login.png)
+
+### Available Books
+
+![Books](screenshots/books-list.png)
+
+### Book Details and Borrowing
+
+![Book Details](screenshots/book-details.png)
+
+### Borrowing History
+
+![History](screenshots/borrowing-history.png)
+
+### Book Management (Admin)
+
+![Book Management](screenshots/admin-books.png)
+
+### Borrowing Management (Admin)
+
+![Borrowing Management](screenshots/admin-borrowings.png)
+
+---
+
+## License
+
+MIT License
